@@ -22,7 +22,11 @@
 	  		<div id="graph-container"></div>
 	  	</div>
 	  	<?php
+<<<<<<< HEAD
 			include "sql_request.php";
+=======
+			include "sqlrequest-sigma.php";
+>>>>>>> 0f4ed0bbb994b8e264a75da520c1eff8856bd701
 	  	?>
     </body>
 </html>
