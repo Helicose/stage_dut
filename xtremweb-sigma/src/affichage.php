@@ -23,5 +23,6 @@
 	  	</div>
 	  	<?php
 			include "sqlrequest-sigma.php";
+	    	?>
     </body>
 </html>
