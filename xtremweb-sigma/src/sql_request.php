@@ -299,7 +299,7 @@
 		for (var i=0 ; i < data[k].length ; i++){			//Parcours les donnees			
 			for(var j=0 ; j < g.nodes.length ; j++ ){	//On cherche si un node du label existe deja
 				if( data[k][i][1] == g.nodes[j].label ){	//Si il existe, p "presence" =1 et Size +=1
-					g.nodes[j].size++;
+					//g.nodes[j].size++;***********************
 					p=1;
 				}
 			}
@@ -329,16 +329,7 @@
 			p=0;					//Sinon on l'a deja grossit donc on réinitialise p.
 			
 		}
-	//Les ponts
-	/* modèle
-		g.edges.push({
-			id: 'e1',
-			source: 'n0',
-			target: 'n1',
-			size: 10,
-			color: '#0000ff'
-	 	});
-	*/<?php	
+	<?php	
 	}	
 	/**************************************************
      * Close MySQL connection
@@ -350,51 +341,42 @@
 	  graph: g,
 	  container: 'graph-container'
 	});
-	// --Fonction du clic sur un node-- 
-	/*Pour afficher les données
-	s.bind('clickNodes', function(e){
-		var res = "";
-		for (var k=0 ; k<data.length ;k++){
-			for(var i=0; i<data[k].length;i++){
-				if(e.data.node[0].id==data[k][i][0]){
-					for (var j=1 ; j<data[k][i].length ;j++){
-						res+=columns[k][j]+" : "+data[k][i][j]+"\n";
-					}
-				}
-			}
-		}
-		res+="Size : "+e.data.node[0].size
-		alert(res);
-		//e.data.node[0].id : Récupérer l'id d'un noeud
-	});
-	*/
+	var verif = 0;
 	//Pour afficher la table
-	s.bind('clickNodes', function(e){
-		var tag;
-		for (var k=0 ; k<data.length ;k++){
-			for(var i=0; i<data[k].length;i++){
-				if(e.data.node[0].id==data[k][i][0]){
-					if(k==0){
-						tag = data[k][i][1];
-						sessionStorage.setItem("sent", tag);
-						console.log(tag);
-						open("./works.html",tag);
-					}
-					if(k==1){
-						tag = data[k][i][1];
-						sessionStorage.setItem("sent", tag);
-						console.log(tag);
-						open("./users.html",tag);
-					}
-					if(k==2){
-						tag = data[k][i][1];
-						sessionStorage.setItem("sent", tag);
-						console.log(tag);
-						open("./hosts.html",tag);
+	s.bind('mousemove', function(e){
+			verif = 1;
+			console.log(verif);
+		});
+	s.bind('doubleClickNodes', function(e){
+		
+		if(verif==0){
+			var tag;
+			for (var k=0 ; k<data.length ;k++){
+				for(var i=0; i<data[k].length;i++){
+					if(e.data.node[0].id==data[k][i][0]){
+						if(k==0){
+							tag = data[k][i][1];
+							sessionStorage.setItem("sent", tag);
+							console.log(tag);
+							open("./works.html",tag);
+						}
+						if(k==1){
+							tag = data[k][i][1];
+							sessionStorage.setItem("sent", tag);
+							console.log(tag);
+							open("./users.html",tag);
+						}
+						if(k==2){
+							tag = data[k][i][1];
+							sessionStorage.setItem("sent", tag);
+							console.log(tag);
+							open("./hosts.html",tag);
+						}
 					}
 				}
 			}
 		}
+		console.log(verif);
 	});
 	//-- Plugin Drag --
 	var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);

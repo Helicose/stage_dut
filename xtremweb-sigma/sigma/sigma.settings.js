@@ -158,7 +158,7 @@
     // {boolean}
     mouseWheelEnabled: true,
     // {boolean}
-    doubleClickEnabled: true,
+    doubleClickEnabled: false,
     // {boolean} Defines whether the custom events such as "clickNode" can be
     //           used.
     eventsEnabled: true,
